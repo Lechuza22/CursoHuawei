@@ -451,6 +451,7 @@ diseño de arquitectura vistas en la sección 4.)*
 ### Mapa conceptual
 
 ```mermaid
+%%{init: {"themeVariables": {"fontSize": "24px"}, "flowchart": {"useMaxWidth": false, "nodeSpacing": 75, "rankSpacing": 75}}}%%
 flowchart TD
     M1["Módulo 1: Architecture Design<br/>Methodology on Huawei Cloud"]
     M1 --> A[Cloud Computing]
@@ -987,6 +988,7 @@ Huawei Cloud, ya que el texto fuente no incluye la respuesta explícita.)*
 ### Mapa conceptual
 
 ```mermaid
+%%{init: {"themeVariables": {"fontSize": "24px"}, "flowchart": {"useMaxWidth": false, "nodeSpacing": 75, "rankSpacing": 75}}}%%
 flowchart TD
     M2["Módulo 2: Typical Service<br/>Implementation Solutions"]
     M2 --> A["Arquitecturas de capas"]
@@ -1407,6 +1409,7 @@ en el primer arranque tras la compra — "execute once".)*
 ### Mapa conceptual
 
 ```mermaid
+%%{init: {"themeVariables": {"fontSize": "24px"}, "flowchart": {"useMaxWidth": false, "nodeSpacing": 75, "rankSpacing": 75}}}%%
 flowchart TD
     M3["Módulo 3: Cloud Compute<br/>Solution Design"]
     M3 --> A["Servicios de cómputo"]
@@ -1873,6 +1876,7 @@ funcionalidad/acceso, no el presupuesto.)*
 ### Mapa conceptual
 
 ```mermaid
+%%{init: {"themeVariables": {"fontSize": "24px"}, "flowchart": {"useMaxWidth": false, "nodeSpacing": 75, "rankSpacing": 75}}}%%
 flowchart TD
     M4["Módulo 4: Cloud Storage<br/>Solution Design"]
     M4 --> A[OBS]
