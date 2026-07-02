@@ -432,6 +432,50 @@ diseño de arquitectura vistas en la sección 4.)*
 
 ---
 
+### Resumen del módulo
+
+- Cloud computing evolucionó de la virtualización (2000s) al cloud
+  native (Kubernetes, 2018); existen tres modelos de despliegue
+  (private/public/hybrid) y tres de servicio (IaaS/PaaS/SaaS).
+- Huawei Cloud organiza su infraestructura en **Regions** (aisladas entre
+  sí) y **AZs** (para alta disponibilidad); se recomiendan 2+ AZs cuando
+  se requiere HA.
+- La migración a la nube está impulsada por tecnología, por la oferta de
+  servicios PaaS/SaaS de los proveedores, y por políticas públicas.
+- Toda arquitectura de solución se diseña y evalúa según **cinco
+  principios**: Security, Reliability/Availability, Performance, Cost,
+  Maintainability.
+- El caso Vmall ilustra cómo aplicar estos principios a un e-commerce
+  real, con foco en escenarios de tráfico extremo (flash sale).
+
+### Mapa conceptual
+
+```mermaid
+flowchart TD
+    M1["Módulo 1: Architecture Design<br/>Methodology on Huawei Cloud"]
+    M1 --> A[Cloud Computing]
+    A --> A1["Modelos de despliegue:<br/>Private / Public / Hybrid"]
+    A --> A2["Modelos de servicio:<br/>IaaS / PaaS / SaaS"]
+    M1 --> B[Infraestructura Huawei Cloud]
+    B --> B1[Region]
+    B --> B2[AZ]
+    M1 --> C[Fuerzas de migración]
+    C --> C1[Technology-driven]
+    C --> C2[Service-driven]
+    C --> C3[Policy-driven]
+    M1 --> D["5 Principios de diseño"]
+    D --> D1[Security]
+    D --> D2["Reliability / Availability"]
+    D --> D3[Performance]
+    D --> D4[Cost]
+    D --> D5[Maintainability]
+    M1 --> E["Caso Vmall: e-commerce"]
+    E --> E1["Flash sale strategies"]
+    E --> E2["Arquitectura multi-AZ"]
+```
+
+---
+
 ### Notas y capturas propias
 
 Espacio para agregar capturas propias del módulo. Guardar las imágenes en
@@ -923,6 +967,45 @@ Huawei Cloud, ya que el texto fuente no incluye la respuesta explícita.)*
 - **CCI**: Cloud Container Instance
 - **ASM**: (Istio-based) Application Service Mesh
 
+---
+
+### Resumen del módulo
+
+- Una **application** tiene un único vendor y owner; la **application
+  instance** es la unidad mínima de migración a la nube (relación 1:N
+  con la aplicación).
+- Existen varios estilos de layering: 3 capas (UIL/BLL/DAL), 4 capas
+  (+Manager layer), MVC y microservicios — cada uno resuelve de forma
+  distinta el "bloat" de lógica de negocio de la capa de servicio.
+- La arquitectura de referencia de e-commerce combina una **Service VPC**
+  (frontend/aplicación/datos) con una **O&M VPC** (jump server + IAM +
+  monitoreo).
+- El roadmap de evolución HA tiene **12 pasos** no obligatorios: desde un
+  solo nodo hasta microservicios, pasando por cache, motor de búsqueda,
+  sharding, NoSQL, mensajería asíncrona, CDN y multi-site.
+
+### Mapa conceptual
+
+```mermaid
+flowchart TD
+    M2["Módulo 2: Typical Service<br/>Implementation Solutions"]
+    M2 --> A["Arquitecturas de capas"]
+    A --> A1["3 capas: UIL / BLL / DAL"]
+    A --> A2["4 capas: +Manager layer"]
+    A --> A3[MVC]
+    A --> A4[Microservicios]
+    M2 --> B["Arquitectura de referencia<br/>e-commerce"]
+    B --> B1["Service VPC / O&M VPC"]
+    B --> B2["ECS, RDS, OBS, IAM,<br/>CTS, Cloud Eye"]
+    M2 --> C["Roadmap de evolución HA:<br/>12 pasos"]
+    C --> C1["1-3: Separación y clusters"]
+    C --> C2["4-7: Cache, búsqueda, sharding"]
+    C --> C3["8-9: NoSQL, mensajería async"]
+    C --> C4["10-12: CDN, multi-site,<br/>microservicios"]
+```
+
+---
+
 ### Notas y capturas propias
 
 Espacio para agregar capturas propias del módulo. Guardar las imágenes en
@@ -1302,6 +1385,48 @@ en el primer arranque tras la compra — "execute once".)*
 - **CCI**: Cloud Container Instance
 - **SDI**: (tecnología de virtualización de E/S de Huawei Cloud para
   discos compartidos en BMS)
+
+---
+
+### Resumen del módulo
+
+- **ECS** es el cómputo elástico central de Huawei Cloud; su "instance
+  flavor" codifica tipo, generación, tamaño y relación memoria/vCPU.
+- La elección de instancia debe basarse en el componente que corre en
+  ella, no en la industria; conviene preferir varios servidores chicos a
+  pocos grandes (menor **blast radius**).
+- **Imágenes** (arranque rápido, actualización lenta) y **scripts/user
+  data** (flexibles, ejecución una sola vez) son las dos formas de
+  inicializar un ECS, y suelen combinarse.
+- **DeH** y **BMS** son alternativas dedicadas/single-tenant a ECS para
+  cargas que requieren aislamiento físico, alto rendimiento o compliance.
+- Los cinco principios se aplican también a la capa de cómputo: HSS y
+  encriptación (security), anti-afinidad y ELB cross-AZ (reliability),
+  Cloud Eye (performance), billing modes (cost).
+
+### Mapa conceptual
+
+```mermaid
+flowchart TD
+    M3["Módulo 3: Cloud Compute<br/>Solution Design"]
+    M3 --> A["Servicios de cómputo"]
+    A --> A1["ECS: instance flavor,<br/>imagen vs. scripts"]
+    A --> A2["DeH: Dedicated Host"]
+    A --> A3["BMS: Bare Metal Server"]
+    M3 --> B["Selección de almacenamiento"]
+    B --> B1[EVS]
+    B --> B2["Local Disk"]
+    B --> B3[SFS]
+    B --> B4[OBS]
+    M3 --> C["5 Principios aplicados<br/>a cómputo"]
+    C --> C1[Security]
+    C --> C2[Reliability]
+    C --> C3[Performance]
+    C --> C4[Cost]
+    C --> C5["O&M"]
+```
+
+---
 
 ### Notas y capturas propias
 
@@ -1727,6 +1852,48 @@ funcionalidad/acceso, no el presupuesto.)*
 - **URL**: Uniform Resource Locator
 - **CCE**: Cloud Container Engine
 - **CCI**: Cloud Container Instance
+
+---
+
+### Resumen del módulo
+
+- **OBS** es almacenamiento de objetos fully managed con confiabilidad de
+  99.9999999999%, organizado en buckets/objetos y con tres clases de
+  costo decreciente (Standard / Infrequent Access / Archive).
+- El control de acceso en OBS combina **bucket policies**, **ACLs** y
+  **URLs firmadas**; el versionado protege contra borrados accidentales,
+  pero factura todas las versiones sin delete marker.
+- **EVS** y **SFS** son los otros dos pilares de storage: EVS para
+  discos de ECS (bloques), SFS para archivos compartidos (NFS/CIFS),
+  cada uno con múltiples tiers de rendimiento.
+- Los cinco principios aplicados a storage: evitar **hot partitions**
+  con prefijos aleatorios (performance), elegir la clase de storage
+  correcta y usar políticas de **lifecycle** (cost-effectiveness).
+
+### Mapa conceptual
+
+```mermaid
+flowchart TD
+    M4["Módulo 4: Cloud Storage<br/>Solution Design"]
+    M4 --> A[OBS]
+    A --> A1["Buckets y objetos"]
+    A --> A2["Permisos: policies,<br/>ACLs, signed URL"]
+    A --> A3[Versionado]
+    A --> A4["Clases: Standard /<br/>Infrequent Access / Archive"]
+    M4 --> B[EVS]
+    B --> B1["Extreme SSD / Ultra-high I/O /<br/>General Purpose SSD / High I/O"]
+    M4 --> C[SFS]
+    C --> C1["SFS Turbo Standard / Performance"]
+    C --> C2["HPC 40 / 250 / 1000 MB/s/TiB"]
+    M4 --> D["5 Principios aplicados<br/>a storage"]
+    D --> D1[Security]
+    D --> D2[Reliability]
+    D --> D3[Performance]
+    D --> D4["Cost-effectiveness"]
+    D --> D5[Maintainability]
+```
+
+---
 
 ### Notas y capturas propias
 
