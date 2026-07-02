@@ -166,8 +166,7 @@ de una empresa:
   inteligente con big data e IA, desarrollo ágil con DevOps,
   microservicios y contenedores.
 
-![Fase 1: integración de recursos](../raw/01-architecture-design-methodology-on-huawei-cloud/images/1._Architecture_Design_Methodology_on_Huawei_Cloud.pdf-0016-02.png)
-![Fase 2: servicio ágil](../raw/01-architecture-design-methodology-on-huawei-cloud/images/1._Architecture_Design_Methodology_on_Huawei_Cloud.pdf-0016-03.png)
+![Fase 1 (integración de recursos) y Fase 2 (servicio ágil)](../raw/01-architecture-design-methodology-on-huawei-cloud/images/1._Architecture_Design_Methodology_on_Huawei_Cloud.pdf-0016-02.png)
 
 **Policy-driven** — ejemplos de políticas nacionales que promueven la nube:
 13th Five-Year Science and Technology Innovation Plan (China, 2016),
@@ -532,15 +531,12 @@ La arquitectura de tres capas es simple de implementar, pero propensa a
 de servicio. La arquitectura de cuatro capas agrega una capa general de
 procesamiento (**manager layer**) a las tres capas originales:
 
-![Capa Web y capa de servicio](../raw/02-typical-service-implementation-solutions-on-the-cloud/images/2._Typical_Service_Implementation_Solutions_on_the_Cloud.pdf-0008-03.png)
+![Arquitectura de cuatro capas: Web layer, Service layer, Manager layer y DAO layer](../raw/02-typical-service-implementation-solutions-on-the-cloud/images/2._Typical_Service_Implementation_Solutions_on_the_Cloud.pdf-0008-03.png)
 
 - **Web layer**: redirige el control de acceso, valida parámetros básicos
   y procesa servicios que no se reutilizan.
 - **Service layer**: capa específica de lógica de negocio.
 - **Manager layer** (capa de procesamiento general):
-
-![Capa Manager y capa DAO](../raw/02-typical-service-implementation-solutions-on-the-cloud/images/2._Typical_Service_Implementation_Solutions_on_the_Cloud.pdf-0008-08.png)
-
   - Pre-procesa resultados devueltos e información de conversión de
     excepciones de la capa encapsulada por plataformas de terceros.
   - Provee capacidades comunes de la capa de servicio, como la solución
@@ -808,15 +804,13 @@ entre aplicaciones distribuidas. Soporta APIs HTTP, SDK TCP y SDK Kafka.
 
 ##### Paso 10 — Nearby access and content decoupling
 
-![Resolución DNS y entrega de contenido vía CDN desde el PoP más cercano](../raw/02-typical-service-implementation-solutions-on-the-cloud/images/2._Typical_Service_Implementation_Solutions_on_the_Cloud.pdf-0030-01.png)
+![Resolución DNS y entrega de contenido vía CDN: PoP más cercano y caché jerárquico entre Edge PoP y Central PoP/origin server](../raw/02-typical-service-implementation-solutions-on-the-cloud/images/2._Typical_Service_Implementation_Solutions_on_the_Cloud.pdf-0030-01.png)
 
 A medida que crece el negocio, aumenta la presión sobre los servidores. El
 desacople de contenido dinámico/estático ayuda: los recursos estáticos se
 separan del backend, se cachean en **CDN** y se despliegan en salas de
 equipos de proveedores de red, para que el usuario los obtenga desde la
 sala más cercana.
-
-![Cache jerárquico entre Edge PoP y Central PoP / origin server](../raw/02-typical-service-implementation-solutions-on-the-cloud/images/2._Typical_Service_Implementation_Solutions_on_the_Cloud.pdf-0030-05.png)
 
 - **Servicio**: CDN (Content Delivery Network)
 - **Ventaja**: el backend se orienta más a servicio (solo expone APIs); el
@@ -1041,7 +1035,7 @@ otros.
 
 ##### Inicialización de un ECS
 
-![Pasos de configuración para crear un ECS: básica, red, avanzada, confirmación](../raw/03-cloud-compute-solution-design/images/3._Cloud_Compute_Solution_Design.pdf-0018-01.png)
+![Pasos de configuración para crear un ECS: básica, red, avanzada, confirmación](../raw/03-cloud-compute-solution-design/images/3._Cloud_Compute_Solution_Design.pdf-0014-01.png)
 
 Los cuatro pasos de configuración son: **básica** (billing mode, region/AZ,
 instance type, boot image), **red** (VPC y subred, security group, EIP),
@@ -1068,6 +1062,8 @@ de tipo de recurso de VM y un OS, y permite crear ECSs idénticos.
   imagen es responsable de su seguridad.
 
 **Usando scripts (user data):**
+
+![Pantalla de Advanced Options / User Data para inyectar un script Bash al crear un ECS](../raw/03-cloud-compute-solution-design/images/3._Cloud_Compute_Solution_Design.pdf-0018-01.png)
 
 - **User data**: interacción de datos entre el usuario y el servidor; en
   un formato específico se puede tratar como un script (Bash, PowerShell,
@@ -1650,7 +1646,7 @@ almacenamiento sobre una arquitectura de ejemplo:
 
 Latencia tan baja como 10 ms, con alta concurrencia y ancho de banda.
 
-![Nombres de objeto con prefijo secuencial vs. prefijo aleatorio para evitar hot partitions](../raw/04-cloud-storage-solution-design/images/4._Cloud_Storage_Solution_Design.pdf-0035-03.png)
+![Nombres de objeto con prefijo secuencial vs. prefijo aleatorio para evitar hot partitions](../raw/04-cloud-storage-solution-design/images/4._Cloud_Storage_Solution_Design.pdf-0034-01.png)
 
 Hay que evitar las **hot partitions** (particiones calientes): se
 recomienda usar **prefijos aleatorios** en los nombres de objeto (en
@@ -1660,6 +1656,8 @@ lugar de timestamps secuenciales) para distribuir mejor la carga.
 
 **Almacenamiento y cómputo desacoplados, para costos de almacenamiento
 bajos.**
+
+![Cuatro ítems de facturación de OBS: storage, downstream traffic, requests y data retrieved](../raw/04-cloud-storage-solution-design/images/4._Cloud_Storage_Solution_Design.pdf-0035-03.png)
 
 OBS tiene cuatro ítems de facturación: **storage** (almacenamiento),
 **traffic** (tráfico), **requests** (solicitudes) y **data retrieval**
